@@ -20,6 +20,5 @@ class User < ApplicationRecord
 
   def password_required?
     return false
-    super
   end
 end
