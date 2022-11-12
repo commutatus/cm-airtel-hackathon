@@ -9,6 +9,6 @@ class User < ApplicationRecord
     admin: 1,
     super_admin: 2
   }
-  has_many :chatbot
-  has_many :intent
+  has_many :chatbots
+  has_many :intents
 end
