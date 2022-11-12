@@ -9,8 +9,5 @@ class User < ApplicationRecord
     admin: 1,
     super_admin: 2
   }
-  # Remove this once role is setup and mentioned in zcm_admin.rb
-  # def super_admin?
-  #   true
-  # end
+  has_many :chatbot
 end
