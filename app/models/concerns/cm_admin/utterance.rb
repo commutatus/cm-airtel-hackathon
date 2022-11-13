@@ -24,7 +24,6 @@ module CmAdmin::Utterance
 
       cm_new page_title: 'Add Utterance', page_description: 'Enter all details to add utterance' do
         form_field :content, input_type: :string, label: 'Content'
-        form_field :intent_id, input_type: :single_select, label: 'Intent', helper_method: :intent_collection
       end
 
       cm_edit page_title: 'Edit Utterance', page_description: 'Edit details of the utterance' do
