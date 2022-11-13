@@ -14,10 +14,6 @@ class User < ApplicationRecord
   has_many :chatbots
   has_many :intents
 
-  def super_admin
-    super_admin?
-  end
-
   def password_required?
     return false
   end
