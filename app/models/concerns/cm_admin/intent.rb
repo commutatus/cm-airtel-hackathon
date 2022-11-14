@@ -32,13 +32,13 @@ module CmAdmin::Intent
 
       cm_new page_title: 'Add Intent', page_description: 'Enter all details to add intent' do
         form_field :name, input_type: :string, label: 'Name'
-        form_field :user_id, input_type: :single_select, label: 'User', helper_method: :user_collection
+        form_field :user_id, input_type: :hidden, helper_method: :user_id
         form_field :chatbot_id, input_type: :single_select, label: 'Chatbot', helper_method: :chatbot_collection
       end
 
       cm_edit page_title: 'Edit Intent', page_description: 'Edit details of the intent' do
         form_field :name, input_type: :string, label: 'Name'
-        form_field :user_id, input_type: :single_select, label: 'User', helper_method: :user_collection
+        form_field :user_id, input_type: :hidden, helper_method: :user_id
         form_field :chatbot_id, input_type: :single_select, label: 'Chatbot', helper_method: :chatbot_collection
       end
     end
