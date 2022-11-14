@@ -28,7 +28,6 @@ module CmAdmin::Response
 
       cm_edit page_title: 'Edit Response', page_description: 'Edit details of the response' do
         form_field :content, input_type: :string, label: 'Content'
-        form_field :intent_id, input_type: :single_select, label: 'Intent', helper_method: :intent_collection
       end
     end
   end
