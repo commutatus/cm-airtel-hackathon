@@ -4,20 +4,12 @@ class CmAdmin::ResponsePolicy < ApplicationPolicy
     true
   end
   
-  def show?
-    true
-  end
-  
-  def create?
-    true
-  end
-  
   def update?
-    true
+    index?
   end
   
   def destroy?
-    true
+    index?
   end
   
 end

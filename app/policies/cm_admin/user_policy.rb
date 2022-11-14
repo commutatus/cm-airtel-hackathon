@@ -5,19 +5,19 @@ class CmAdmin::UserPolicy < ApplicationPolicy
   end
   
   def show?
-    @user.super_admin?
+    index?
   end
   
   def create?
-    @user.super_admin?
+    index?
   end
   
   def update?
-    @user.super_admin?
+    index?
   end
   
   def destroy?
-    @user.super_admin?
+    index?
   end
   
 end
