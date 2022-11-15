@@ -14,7 +14,6 @@ class CmAdmin::ChatbotPolicy < ApplicationPolicy
 
   class Scope < Scope
     def resolve
-      scope.where(user: @user)
       if @user.super_admin?
         scope.all
       else
