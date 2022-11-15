@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_12_134239) do
+ActiveRecord::Schema.define(version: 2022_11_15_092637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,11 +110,13 @@ ActiveRecord::Schema.define(version: 2022_11_12_134239) do
     t.string "source", null: false
     t.json "payload"
     t.string "event_type"
-    t.string "webhook_event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "business_id"
+    t.string "session_id"
+    t.index ["business_id"], name: "index_webhook_events_on_business_id"
   end
-  
+
   create_table "utterances", force: :cascade do |t|
     t.text "content"
     t.bigint "intent_id", null: false
