@@ -1,0 +1,20 @@
+.cm-sidebar
+  .cm-sidebar__logo-header
+    = image_tag('/assets/logo.png', alt: 'logo image')
+
+  .cm-sidebar__quick-search
+    span
+      i.fa.fa-search
+    input data-bs-target="#quickSearchModal" data-bs-toggle="modal" type="text" placeholder="Quick Links"
+
+  .cm-sidebar__menu-wrapper
+    = navigation_links('sidebar')
+    .sidebar-menu__tabs-wrapper
+
+  .sidebar__footer
+    .menu-item
+      .auth-option.text-center
+        = link_to destroy_user_session_path, method: :delete, class: 'auth-link btn btn-secondary'
+          | Logout
+
+= render 'layouts/quick_links'
