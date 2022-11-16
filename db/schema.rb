@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_15_092637) do
+ActiveRecord::Schema.define(version: 2022_11_15_073425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,14 @@ ActiveRecord::Schema.define(version: 2022_11_15_092637) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "utterances", force: :cascade do |t|
+    t.text "content"
+    t.bigint "intent_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["intent_id"], name: "index_utterances_on_intent_id"
+  end
+
   create_table "webhook_events", force: :cascade do |t|
     t.string "source", null: false
     t.json "payload"
@@ -115,14 +123,6 @@ ActiveRecord::Schema.define(version: 2022_11_15_092637) do
     t.string "business_id"
     t.string "session_id"
     t.index ["business_id"], name: "index_webhook_events_on_business_id"
-  end
-
-  create_table "utterances", force: :cascade do |t|
-    t.text "content"
-    t.bigint "intent_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["intent_id"], name: "index_utterances_on_intent_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
