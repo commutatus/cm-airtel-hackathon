@@ -1,6 +1,10 @@
 class WebhooksController < ApplicationController
-  def process(webhook)
-    # webhook_event_id was set not null true we can refactor it later
-    webhook_event = WebhookEvent.create(source: params[:webhook_source], payload: request.body.read, webhook_event_id: rand(10))
+
+  def process(_webhook)
+    response = JSON.parse(request.body).with_indifferent_access
+    webhook_event = WebhookEvent.create(source: params[:webhook_source],
+                                        payload: response,
+                                        session_id: response.dig('sessionId'),
+                                        business_id: response.dig('businessId'))
   end
 end
