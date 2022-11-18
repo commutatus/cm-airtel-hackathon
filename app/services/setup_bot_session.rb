@@ -38,8 +38,7 @@ class SetupBotSession
   end
 
   def fetch_bot
-    Chatbot.first
-    # Chatbot.find_by(phone_number: @event.payload['to'])
+    Chatbot.find_by(phone_number: @event.payload['to'])
   end
 
   # send text message to initiated session
@@ -59,7 +58,7 @@ class SetupBotSession
     return if @chatbot.nil?
 
     @chat_session = fetch_session
-    @chat_session.present? ? get_lex_session : new_session
+    get_lex_session
   end
 
   #chatbot session in db
