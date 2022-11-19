@@ -7,6 +7,7 @@ class Chatbot < ApplicationRecord
   validates_format_of :description, with: /\A(.{,200})\z/, message: 'can have maximum 200 characters.'
 
   after_create_commit :create_on_aws
+  before_destroy :delete_from_aws
 
   # Creates an Amazon Lex conversational bot and store the bot_id.
   def create_on_aws
@@ -27,4 +28,15 @@ class Chatbot < ApplicationRecord
     update(bot_id: resp.bot_id)
   end
 
+  # Deletes all versions of a bot
+  def delete_from_aws
+    client = Aws::LexModelsV2::Client.new(
+      region: 'ap-southeast-1'
+    )
+
+    resp = client.delete_bot({
+      bot_id: bot_id, # required
+      skip_resource_in_use_check: false,
+    })
+  end
 end
