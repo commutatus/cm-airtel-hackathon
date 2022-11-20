@@ -27,6 +27,10 @@ class Chatbot < ApplicationRecord
     })
 
     update_column('bot_id', resp.bot_id)
+
+    sleep(2)
+
+    create_bot_alias
   end
 
   # Updates the configuration of an existing bot.
@@ -57,5 +61,23 @@ class Chatbot < ApplicationRecord
       bot_id: bot_id, # required
       skip_resource_in_use_check: false,
     })
+  end
+
+  # Creates an alias for the specified version of a bot.
+  def create_bot_alias
+    client = Aws::LexModelsV2::Client.new(
+      region: 'ap-southeast-1',
+    )
+
+    resp = client.create_bot_alias({
+      bot_alias_name: "#{name}_alias", # required
+      description: "Bot alias created on #{Rails.env} environment via API by #{Current.user&.email || 'rails console'}",
+      sentiment_analysis_settings: {
+        detect_sentiment: true, # required
+      },
+      bot_id: bot_id, # required
+    })
+
+    update_column('bot_alias_id', resp.bot_alias_id)
   end
 end
