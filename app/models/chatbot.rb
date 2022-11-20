@@ -13,7 +13,7 @@ class Chatbot < ApplicationRecord
   # Creates an Amazon Lex conversational bot and store the bot_id.
   def create_on_aws
     client = Aws::LexModelsV2::Client.new(
-      region: 'ap-southeast-1'
+      region: 'ap-southeast-1',
     )
 
     resp = client.create_bot({
@@ -31,12 +31,14 @@ class Chatbot < ApplicationRecord
     sleep(2)
 
     create_bot_alias
+
+    create_bot_locale
   end
 
   # Updates the configuration of an existing bot.
   def update_on_aws
     client = Aws::LexModelsV2::Client.new(
-      region: 'ap-southeast-1'
+      region: 'ap-southeast-1',
     )
 
     resp = client.update_bot({
@@ -54,7 +56,7 @@ class Chatbot < ApplicationRecord
   # Deletes all versions of a bot
   def delete_from_aws
     client = Aws::LexModelsV2::Client.new(
-      region: 'ap-southeast-1'
+      region: 'ap-southeast-1',
     )
 
     resp = client.delete_bot({
@@ -79,5 +81,20 @@ class Chatbot < ApplicationRecord
     })
 
     update_column('bot_alias_id', resp.bot_alias_id)
+  end
+
+  # Creates a locale in the bot.
+  def create_bot_locale
+    client = Aws::LexModelsV2::Client.new(
+      region: 'ap-southeast-1',
+    )
+
+    resp = client.create_bot_locale({
+      bot_id: bot_id, # required
+      bot_version: 'DRAFT', # required
+      locale_id: 'en_IN', # required
+      description: 'Bot created on English (India).',
+      nlu_intent_confidence_threshold: 0.9, # required
+    })
   end
 end
