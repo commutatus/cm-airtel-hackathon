@@ -26,7 +26,7 @@ class Chatbot < ApplicationRecord
       idle_session_ttl_in_seconds: 3600, # required
     })
 
-    update(bot_id: resp.bot_id)
+    update_column('bot_id', resp.bot_id)
   end
 
   # Updates the configuration of an existing bot.
