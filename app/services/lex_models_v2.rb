@@ -70,7 +70,7 @@ class LexModelsV2
     resp = @models_v2_client.create_bot_locale({
       bot_id: @bot.bot_id, # required
       bot_version: 'DRAFT', # required
-      locale_id: 'en_IN', # required
+      locale_id: @bot.locale_id, # required
       description: 'Bot created on English (India).',
       nlu_intent_confidence_threshold: 0.9, # required
     })

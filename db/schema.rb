@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_17_132914) do
+ActiveRecord::Schema.define(version: 2022_11_21_133602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_132914) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "phone_number"
     t.string "bot_alias_id"
-    t.string "locale_id"
+    t.string "locale_id", default: "en_IN"
     t.index ["user_id"], name: "index_chatbots_on_user_id"
   end
 
