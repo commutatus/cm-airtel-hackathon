@@ -56,13 +56,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
-gem 'cm-admin'
+gem 'cm-admin', '~> 0.8.9'
 gem 'net-smtp'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
-gem 'aws-sdk-s3', '~> 1'
-gem 'aws-sdk-ec2', '~> 1'
-gem 'aws-sdk-lexmodelbuildingservice'
 gem 'aws-sdk-lexmodelsv2'
-gem 'aws-sdk-lex'
 gem 'aws-sdk-lexruntimev2'
