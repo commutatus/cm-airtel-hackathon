@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_132914) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-  
+
   create_table "utterances", force: :cascade do |t|
     t.text "content"
     t.bigint "intent_id", null: false
@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(version: 2022_11_17_132914) do
     t.string "session_id"
     t.index ["business_id"], name: "index_webhook_events_on_business_id"
   end
-  
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chatbots", "users"
