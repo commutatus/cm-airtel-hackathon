@@ -11,8 +11,8 @@ class User < ApplicationRecord
     super_admin: 2
   }
 
-  has_many :chatbots
-  has_many :intents
+  has_many :chatbots, dependent: :destroy
+  has_many :intents, dependent: :destroy
 
   def password_required?
     return false

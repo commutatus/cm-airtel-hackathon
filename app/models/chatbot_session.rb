@@ -2,5 +2,5 @@
 
 class ChatbotSession < ApplicationRecord
   belongs_to :chatbot
-  has_many :chat_responses
+  has_many :chat_responses, dependent: :destroy
 end
