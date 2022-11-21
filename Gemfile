@@ -60,3 +60,9 @@ gem 'cm-admin'
 gem 'net-smtp'
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+gem 'aws-sdk-s3', '~> 1'
+gem 'aws-sdk-ec2', '~> 1'
+gem 'aws-sdk-lexmodelbuildingservice'
+gem 'aws-sdk-lexmodelsv2'
+gem 'aws-sdk-lex'
+gem 'aws-sdk-lexruntimev2'
