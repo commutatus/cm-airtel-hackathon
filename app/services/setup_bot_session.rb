@@ -4,7 +4,6 @@ class SetupBotSession
   def initialize(event)
     @event = event
     @session_client = Aws::LexRuntimeV2::Client.new(region: 'ap-southeast-1')
-    # @bot_client = Aws::LexModelBuildingService::Client.new(region: 'ap-southeast-1')
     @chatbot = fetch_bot
   end
 
@@ -18,7 +17,7 @@ class SetupBotSession
   def new_session
     unless @chat_session.present?
       @chat_session = ChatbotSession.create(from: @event.payload['from'], to: @event.payload['to'],
-                                            started_at: Time.now, session_id: rand.to_s[2..16], chatbot_id: @chatbot.id)
+                                            started_at: Time.now, session_id: SecureRandom.hex(8), chatbot_id: @chatbot.id)
     end
     @session_client.put_session({
                                   bot_id: @chatbot.bot_id,
@@ -47,7 +46,7 @@ class SetupBotSession
                                                 bot_id: @chatbot.bot_id, # required
                                                 bot_alias_id: @chatbot.bot_alias_id, # required
                                                 locale_id: @chatbot.locale_id, # required
-                                                session_id:, # required
+                                                session_id: session_id, # required
                                                 text: @event.payload.dig('message', 'text', 'body') # required
                                               })
     @chat_session.update(last_message_at: Time.now)
