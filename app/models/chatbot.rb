@@ -2,7 +2,7 @@
 
 class Chatbot < ApplicationRecord
   include CmAdmin::Chatbot
-  include AwsLexBot
+  include AwsLex::Chatbot
 
   belongs_to :user
   has_many :intents, dependent: :destroy
