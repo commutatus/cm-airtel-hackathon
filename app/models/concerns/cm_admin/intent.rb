@@ -10,12 +10,14 @@ module CmAdmin::Intent
         filter [:name], :search, placeholder: 'Search'
 
         column :name, header: 'Name'
+        column :description
       end
 
       cm_show page_title: :name, page_description: "Intent Details" do
         tab :profile, '' do
           cm_show_section 'Intent Details' do
             field :name, label: 'Name'
+            field :description
             field :user_id, label: 'User Id'
             field :chatbot_id, label: 'Chatbot Id'
           end
@@ -32,12 +34,14 @@ module CmAdmin::Intent
 
       cm_new page_title: 'Add Intent', page_description: 'Enter all details to add intent' do
         form_field :name, input_type: :string, label: 'Name'
+        form_field :description, input_type: :string
         form_field :user_id, input_type: :hidden, helper_method: :user_id
         form_field :chatbot_id, input_type: :single_select, label: 'Chatbot', helper_method: :chatbot_collection
       end
 
       cm_edit page_title: 'Edit Intent', page_description: 'Edit details of the intent' do
         form_field :name, input_type: :string, label: 'Name'
+        form_field :description, input_type: :string
         form_field :user_id, input_type: :hidden, helper_method: :user_id
         form_field :chatbot_id, input_type: :single_select, label: 'Chatbot', helper_method: :chatbot_collection
       end
