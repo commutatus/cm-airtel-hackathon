@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include CmAdmin::User
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,8 +14,8 @@ class User < ApplicationRecord
     super_admin: 2
   }
 
-  has_many :chatbots
-  has_many :intents
+  has_many :chatbots, dependent: :destroy
+  has_many :intents, dependent: :destroy
 
   def password_required?
     return false
