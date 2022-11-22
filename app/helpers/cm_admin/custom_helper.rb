@@ -1,9 +1,9 @@
 module CmAdmin::CustomHelper
   def chatbot_collection(_model, _ctx)
     if Current.user.super_admin?
-      ::Chatbot.all.map{|cb| [cb.name.titleize, cb.id]}
+      ::Chatbot.all.map{|cb| [cb.name, cb.id]}
     else
-      ::Chatbot.where(user: Current.user).map{|cb| [cb.name.titleize, cb.id]}
+      ::Chatbot.where(user: Current.user).map{|cb| [cb.name, cb.id]}
     end
   end
 
@@ -11,4 +11,3 @@ module CmAdmin::CustomHelper
     Current.user.id
   end
 end
-  
