@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_21_133602) do
+ActiveRecord::Schema.define(version: 2022_11_22_112335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2022_11_21_133602) do
   create_table "chatbots", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "bot_id"
+    t.string "bot_id", comment: "AWS Lex botId value, fetched during the creation from AWS."
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 2022_11_21_133602) do
     t.bigint "chatbot_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.string "intent_id", comment: "AWS Lex intentId value, fetched during the creation from AWS."
     t.index ["chatbot_id"], name: "index_intents_on_chatbot_id"
     t.index ["user_id"], name: "index_intents_on_user_id"
   end
