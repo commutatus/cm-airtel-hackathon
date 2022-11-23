@@ -17,7 +17,7 @@ class SetupBotSession
   def new_session
     unless @chat_session.present?
       @chat_session = ChatbotSession.create(from: @event.payload['from'], to: @event.payload['to'],
-                                            started_at: Time.now, session_id: SecureRandom.hex(8), chatbot_id: @chatbot.id)
+                                            started_at: Time.now, session_id: @event.session_id, chatbot_id: @chatbot.id)
     end
     @session_client.put_session({
                                   bot_id: @chatbot.bot_id,
@@ -63,7 +63,7 @@ class SetupBotSession
   #chatbot session in db
   def fetch_session
     ChatbotSession.where(from: @event.payload['from'], to: @event.payload['to'], ended_at: nil,
-                         chatbot_id: @chatbot.id).last
+                         chatbot_id: @chatbot.id, session_id: @event.session_id).last
   end
 
   def get_lex_session
