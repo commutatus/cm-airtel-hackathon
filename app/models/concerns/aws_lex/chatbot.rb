@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module AwsLexBot
+module AwsLex::Chatbot
   extend ActiveSupport::Concern
 
   included do
@@ -11,17 +11,17 @@ module AwsLexBot
 
   # Creates an Amazon Lex conversational bot and store the bot_id.
   def create_bot
-    LexModelsV2.new(self).create_bot
+    LexModelsV2::Chatbot.new(self).create_bot
   end
 
   # Updates the configuration of an existing bot.
   def update_bot
     arr = ['name', 'description']
-    LexModelsV2.new(self).update_bot if (saved_changes.keys & arr).any?
+    LexModelsV2::Chatbot.new(self).update_bot if (saved_changes.keys & arr).any?
   end
 
   # Deletes all versions of a bot
   def delete_bot
-    LexModelsV2.new(self).delete_bot
+    LexModelsV2::Chatbot.new(self).delete_bot
   end
 end
