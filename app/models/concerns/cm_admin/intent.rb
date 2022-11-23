@@ -11,6 +11,7 @@ module CmAdmin::Intent
 
         column :name, header: 'Name'
         column :description
+        column :chatbot_id
       end
 
       cm_show page_title: :name, page_description: "Intent Details" do
