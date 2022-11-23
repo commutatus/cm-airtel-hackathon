@@ -12,21 +12,21 @@ class Intent < ApplicationRecord
   validates_format_of :description, with: /\A(.{,200})\z/, message: 'can have maximum 200 characters.'
 
   after_create_commit :create_intent
+  after_update_commit :update_intent
+  before_destroy :delete_intent
 
   # Creates an intent and store the intent_id.
   def create_intent
-    client = Aws::LexModelsV2::Client.new(
-      region: 'ap-southeast-1',
-    )
+    LexModelsV2::Intent.new(self).create_intent
+  end
 
-    resp = client.create_intent({
-      bot_id: chatbot.bot_id, # required
-      bot_version: 'DRAFT', # required
-      locale_id: chatbot.locale_id, # required
-      intent_name: name, # required
-      description: description,
-    })
+  # Updates the settings for an intent.
+  def update_intent
+    LexModelsV2::Intent.new(self).update_intent
+  end
 
-    update_column('intent_id', resp.intent_id)
+  # Removes the specified intent.
+  def delete_intent
+    LexModelsV2::Intent.new(self).delete_intent
   end
 end
