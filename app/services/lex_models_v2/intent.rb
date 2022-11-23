@@ -67,12 +67,16 @@ module LexModelsV2
 
     # Removes the specified intent.
     def delete_intent
-      resp = @models_v2_client.delete_intent({
-        intent_id: @intent.intent_id, # required
-        bot_id: @chatbot.bot_id, # required
-        bot_version: 'DRAFT', # required. Must be DRAFT
-        locale_id: @chatbot.locale_id, # required
-      })
+      begin
+        @models_v2_client.delete_intent({
+          intent_id: @intent.intent_id, # required
+          bot_id: @chatbot.bot_id, # required
+          bot_version: 'DRAFT', # required. Must be DRAFT
+          locale_id: @chatbot.locale_id, # required
+        })
+      rescue => exception
+        puts exception
+      end
     end
 
     # Generate an array of hash for all the utterances that belongs to intent
