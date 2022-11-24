@@ -10,24 +10,24 @@ module CmAdmin::Response
 
         filter [:content], :search, placeholder: 'Search'
 
-        column :content, header: 'Content'
+        column :content
       end
 
-      cm_show page_title: :content, page_description: "Response Details" do
+      cm_show page_title: :content, page_description: 'Response Details' do
         tab :profile, '' do
           cm_show_section 'Response Details' do
-            field :content, label: 'Content'
+            field :content
             field :intent_id, label: 'Intent Id'
           end
         end
       end
 
       cm_new page_title: 'Add Response', page_description: 'Enter all details to add response' do
-        form_field :content, input_type: :string, label: 'Content'
+        form_field :content, input_type: :string
       end
 
       cm_edit page_title: 'Edit Response', page_description: 'Edit details of the response' do
-        form_field :content, input_type: :string, label: 'Content'
+        form_field :content, input_type: :string
       end
     end
   end
