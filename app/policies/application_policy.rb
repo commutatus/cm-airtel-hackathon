@@ -40,6 +40,10 @@ class ApplicationPolicy
     false
   end
 
+  def exportable?
+    false
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
