@@ -27,14 +27,14 @@ module CmAdmin::Chatbot
       cm_new page_title: 'Add Chatbot', page_description: 'Enter all details to add chatbot' do
         form_field :name, input_type: :string
         form_field :description, input_type: :string
-        form_field :phone_number, input_type: :string, label: 'WhatsApp business number'
+        form_field :phone_number, input_type: :integer, label: 'WhatsApp business number'
         form_field :user_id, input_type: :hidden, helper_method: :user_id
       end
 
       cm_edit page_title: 'Edit Chatbot', page_description: 'Edit details of the chatbot' do
         form_field :name, input_type: :string
         form_field :description, input_type: :string
-        form_field :phone_number, input_type: :string, label: 'WhatsApp business number'
+        form_field :phone_number, input_type: :integer, label: 'WhatsApp business number'
         form_field :user_id, input_type: :hidden, helper_method: :user_id
       end
     end
