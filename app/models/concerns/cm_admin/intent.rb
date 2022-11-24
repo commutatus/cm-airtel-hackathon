@@ -9,15 +9,15 @@ module CmAdmin::Intent
 
         filter [:name], :search, placeholder: 'Search'
 
-        column :name, header: 'Name'
+        column :name
         column :description
         column :chatbot_id
       end
 
-      cm_show page_title: :name, page_description: "Intent Details" do
+      cm_show page_title: :name, page_description: 'Intent Details' do
         tab :profile, '' do
           cm_show_section 'Intent Details' do
-            field :name, label: 'Name'
+            field :name
             field :description
             field :user_id, label: 'User Id'
             field :chatbot_id, label: 'Chatbot Id'
@@ -30,18 +30,18 @@ module CmAdmin::Intent
       end
 
       tab :responses, 'responses', associated_model: :responses, layout_type: 'cm_association_index' do
-        column :content, header: 'Content'
+        column :content
       end
 
       cm_new page_title: 'Add Intent', page_description: 'Enter all details to add intent' do
-        form_field :name, input_type: :string, label: 'Name'
+        form_field :name, input_type: :string
         form_field :description, input_type: :string
         form_field :user_id, input_type: :hidden, helper_method: :user_id
         form_field :chatbot_id, input_type: :single_select, label: 'Chatbot', helper_method: :chatbot_collection
       end
 
       cm_edit page_title: 'Edit Intent', page_description: 'Edit details of the intent' do
-        form_field :name, input_type: :string, label: 'Name'
+        form_field :name, input_type: :string
         form_field :description, input_type: :string
         form_field :user_id, input_type: :hidden, helper_method: :user_id
         form_field :chatbot_id, input_type: :single_select, label: 'Chatbot', helper_method: :chatbot_collection
