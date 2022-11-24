@@ -37,7 +37,7 @@ class SetupBotSession
   end
 
   def fetch_bot
-    Chatbot.find_by(phone_number: @event.payload['to'])
+    Chatbot.find_by(phone_number: @event.payload['to'].chars.last(10).join)
   end
 
   # send text message to initiated session
