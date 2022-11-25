@@ -21,6 +21,7 @@ module AwsLex::Intent
 
   # Removes the specified intent.
   def delete_intent
+    throw(:abort) if @intent.built_in?
     LexModelsV2::Intent.new(self).delete_intent if self.custom?
   end
 end
