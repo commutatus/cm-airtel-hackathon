@@ -6,8 +6,8 @@ class Intent < ApplicationRecord
 
   belongs_to :user
   belongs_to :chatbot
-  has_many :utterances, dependent: :destroy
-  has_many :responses, dependent: :destroy
+  has_many :utterances, dependent: :delete_all
+  has_many :responses, dependent: :delete_all
 
   enum intent_type: {
     built_in: 'built_in',
