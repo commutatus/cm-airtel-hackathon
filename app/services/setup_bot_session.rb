@@ -46,7 +46,7 @@ class SetupBotSession
                                                 bot_id: @chatbot.bot_id, # required
                                                 bot_alias_id: @chatbot.bot_alias_id, # required
                                                 locale_id: @chatbot.locale_id, # required
-                                                session_id:, # required
+                                                session_id: session_id, # required
                                                 text: @event.text # required
                                               })
     @chat_session.update(last_message_at: Time.now)
