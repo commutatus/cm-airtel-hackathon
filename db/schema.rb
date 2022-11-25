@@ -107,7 +107,9 @@ ActiveRecord::Schema.define(version: 2022_11_24_110757) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
     t.string "intent_id", comment: "AWS Lex intentId value, fetched during the creation from AWS."
+    t.string "intent_type", default: "custom"
     t.index ["chatbot_id"], name: "index_intents_on_chatbot_id"
+    t.index ["intent_type"], name: "index_intents_on_intent_type"
     t.index ["user_id"], name: "index_intents_on_user_id"
   end
 
