@@ -10,8 +10,15 @@ module AwsLex::Chatbot
   end
 
   # Creates an Amazon Lex conversational bot and store the bot_id.
+  # Create built-in fallback intent.
   def create_bot
     LexModelsV2::Chatbot.new(self).create_bot
+    self.intents.create(name: 'FallbackIntent',
+                        description: 'Build-in fallback intent.',
+                        intent_id: 'FALLBCKINT',
+                        user_id: self.user_id,
+                        intent_type: :built_in
+                      )
   end
 
   # Updates the configuration of an existing bot.

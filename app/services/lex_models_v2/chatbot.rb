@@ -32,7 +32,7 @@ module LexModelsV2
 
     # Updates the configuration of an existing bot.
     def update_bot
-      resp = @models_v2_client.update_bot({
+      @models_v2_client.update_bot({
         bot_id: @bot.bot_id, # required
         bot_name: @bot.name, # required
         description: @bot.description,
@@ -46,7 +46,7 @@ module LexModelsV2
 
     # Deletes all versions of a bot
     def delete_bot
-      resp = @models_v2_client.delete_bot({
+      @models_v2_client.delete_bot({
         bot_id: @bot.bot_id, # required
         skip_resource_in_use_check: false,
       })
@@ -68,7 +68,7 @@ module LexModelsV2
 
     # Creates a locale in the bot.
     def create_bot_locale
-      resp = @models_v2_client.create_bot_locale({
+      @models_v2_client.create_bot_locale({
         bot_id: @bot.bot_id, # required
         bot_version: 'DRAFT', # required
         locale_id: @bot.locale_id, # required

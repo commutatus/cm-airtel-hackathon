@@ -11,7 +11,7 @@ module AwsLex::Intent
 
   # Creates an intent and store the intent_id.
   def create_intent
-    LexModelsV2::Intent.new(self).create_intent
+    LexModelsV2::Intent.new(self).create_intent if self.custom?
   end
 
   # Updates the settings for an intent.
@@ -21,6 +21,7 @@ module AwsLex::Intent
 
   # Removes the specified intent.
   def delete_intent
-    LexModelsV2::Intent.new(self).delete_intent
+    throw(:abort) if @intent.built_in?
+    LexModelsV2::Intent.new(self).delete_intent if self.custom?
   end
 end

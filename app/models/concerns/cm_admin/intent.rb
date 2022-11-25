@@ -25,8 +25,8 @@ module CmAdmin::Intent
         end
       end
 
-      tab :utterances, 'utterances', associated_model: :utterances, layout_type: 'cm_association_index' do
-        column :content
+      tab :utterances, 'utterances', associated_model: :utterances, layout_type: 'cm_association_index', display_if: -> (obj) { obj.custom? } do
+        column :content, header: 'Content'
       end
 
       tab :responses, 'responses', associated_model: :responses, layout_type: 'cm_association_index' do

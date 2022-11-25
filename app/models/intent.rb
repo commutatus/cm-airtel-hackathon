@@ -6,8 +6,13 @@ class Intent < ApplicationRecord
 
   belongs_to :user
   belongs_to :chatbot
-  has_many :utterances, dependent: :destroy
-  has_many :responses, dependent: :destroy
+  has_many :utterances, dependent: :delete_all
+  has_many :responses, dependent: :delete_all
+
+  enum intent_type: {
+    built_in: 'built_in',
+    custom: 'custom'
+  }
 
   validates :name, uniqueness: { scope: :chatbot_id }
   validates_format_of :name, with: /\A([a-zA-Z0-9_-]{1,100})\z/, message: 'can have maximum 100 characters. No space is allowed. Valid characters: A–Z, a–z, 0–9, -, _'
