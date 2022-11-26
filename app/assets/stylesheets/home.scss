@@ -126,7 +126,7 @@ body {
   }
 }
 
-.architectural-diagram, .video-demo {
+.architectural-diagram, .video-demo, .meet-team {
   width: 100%;
   display: flex;
   align-items: center;
@@ -134,5 +134,48 @@ body {
 
   h2 {
     text-align: center;
+  }
+}
+
+.meet-team {
+  .card-array {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .card {
+      .card-img {
+        padding: 24px;
+        background: linear-gradient(140deg, #D45B7A, #FDA576);
+
+        img {
+          width: 160px;
+          height: 160px;
+          border: 3px solid #FFFFFF;
+          transition: all 0.4s ease;
+          box-shadow: 0px 4px 10px rgba(111, 112, 115, 0.3);
+
+          &:hover {
+            transform: translateY(3px);
+          }
+        }
+      }
+
+      .card-body {
+        padding: 24px;
+        span {
+          font-size: 16px;
+          font-weight: 600;
+          color: #CBCBCB;
+          letter-spacing: 0.8px;
+        }
+        h5 {
+          font-size: 20px;
+          color: #6F7073;
+          font-weight: 300;
+        }
+      }
+    }
   }
 }
