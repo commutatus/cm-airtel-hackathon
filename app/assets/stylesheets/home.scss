@@ -15,6 +15,7 @@
 
 body {
   font-family: 'Roborto', 'Times New Roman', Times, serif;
+  background-color: #f6f6f6;
 }
 
 .home-navbar {
@@ -125,15 +126,13 @@ body {
   }
 }
 
-.architectural-diagram {
-  height: 100vh;
+.architectural-diagram, .video-demo {
   width: 100%;
-  background-color: #f6f6f6;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  .inner-div {
+  h2 {
     text-align: center;
   }
 }
