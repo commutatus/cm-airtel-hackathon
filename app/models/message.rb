@@ -23,7 +23,7 @@ class Message < ApplicationRecord
   belongs_to :intent, optional: true
   belongs_to :chatbot, optional: true
 
-  after_commit :reply_message, if: ->(obj) { obj.message_type == 'inbound' && obj.saved_change_to_status? && obj.status == 'ack' }
+  after_commit :reply_message, if: ->(obj) { obj.inbound? && obj.saved_change_to_status? && obj.ack? }
 
   def reply_message
     SetupBotSession.new(self).send_message
