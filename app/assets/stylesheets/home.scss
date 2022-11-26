@@ -27,11 +27,6 @@ body {
     justify-content: center;
   }
 
-  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    background-color: #b0b0b0 !important;
-    color: #000000;
-  }
-
   a {
     color: #ffffff;
 
@@ -141,12 +136,15 @@ body {
   .card-array {
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     .card {
+      margin: 0px 50px;
+      max-width: 230px;
+      border: 1px solid #cbcbcb;
+
       .card-img {
         padding: 24px;
+        text-align: center;
         background: linear-gradient(140deg, #D45B7A, #FDA576);
 
         img {
@@ -164,6 +162,8 @@ body {
 
       .card-body {
         padding: 24px;
+        text-align: center;
+
         span {
           font-size: 16px;
           font-weight: 600;

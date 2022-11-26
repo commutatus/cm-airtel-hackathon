@@ -1,7 +1,10 @@
 <nav id="navbar-header" class="navbar  navbar-dark bg-dark px-3 home-navbar">
   <div class="left">
-    <a class="navbar-brand" href="/">Team Commutatus</a>
-    <ul class="nav nav-pills nav-pills-style">
+    <div>
+      <%= image_tag("logo.png", alt: "Company Logo") %>
+      <a class="navbar-brand" href="/">Team Commutatus</a>
+    </div>
+    <ul class="nav">
       <li class="nav-item">
         <a class="nav-link" href="#scrollspyHome">Home</a>
       </li>
@@ -43,16 +46,52 @@
     </div>
   </div>
   <div id="scrollspyMeetTheTeam" class="meet-team">
-    <div class="inner-div">
-      <h2 class="p-2">Meet the Team<h2>
+    <div class="inner-div pb-4">
+      <h2 class="p-2">Meet the Team</h2>
       <div class="card-array">
         <div class="card">
           <div class="card-img">
-            <img class="rounded-circle" alt="Laasya Kurunu" src="https://ca.slack-edge.com/T02JH0Q2E-U011P5QHG9Y-e0d33ae1afdb-512" />
+            <%= image_tag("aditya.png", alt: "Aditya Tiwari", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Aditya Tiwari</h5>
+            <span class="card-text">Engineering Lead</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("shrudhin.jpeg", alt: "Shrudhin V Raj", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Shrudhin V Raj</h5>
+            <span class="card-text">Backend Engineer</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("debajyoti.jpeg", alt: "Debajyoti Dutta", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Debajyoti Dutta</h5>
+            <span class="card-text">Backend Engineer</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("laasya.jpeg", alt: "Laasya Kurunu", class: "rounded-circle") %>
           </div>
           <div class="card-body">
             <h5 class="card-title">Laasya Kanuru</h5>
             <span class="card-text">Data Science Engineer</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("gauri.jpeg", alt: "Gauri Kapse", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Gauri Kapse</h5>
+            <span class="card-text">Data Analyst and Engineer</span>
           </div>
         </div>
       </div>
