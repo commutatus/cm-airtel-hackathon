@@ -132,10 +132,21 @@ body {
   }
 }
 
+.arch-diagram-img {
+  max-width: 100vw;
+}
+
+.video {
+  max-width: 1280px;
+  max-height: 720px;
+}
+
 .meet-team {
   .card-array {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     .card {
       margin: 0px 50px;
