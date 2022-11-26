@@ -9,10 +9,10 @@ class WebhookEvent < ApplicationRecord
     message_entry = Message.find_or_create_by(message_id: payload['messageId'])
     message_entry.update(from: payload['sourceAddress'],
                                     to: payload['recipientAddress'],
-                                    status: payload['msgStatus'],
+                                    status: payload['msgStatus'].underscore,
                                     text: payload.dig('messageParameters', 'text',
                                                       'body').presence || message_entry.text,
                                     session_id: payload['sessionId'],
-                                    message_type: payload['msgStream'])
+                                    message_type: payload['msgStream'].underscore)
   end
 end

@@ -2,25 +2,28 @@
 
 class Message < ApplicationRecord
   enum message_type: {
-    'INBOUND' => 0,
-    'OUBOUND' => 1
+    'inbound' => 0,
+    'outbound' => 1
   }
 
   enum status: {
-    'ACK' => 0,
-    'RECEIVED' => 1,
-    'INITIATED' => 2,
-    'SENT' => 3,
-    'READ' => 4
+    'ack' => 0,
+    'received' => 1,
+    'initiated' => 2,
+    'sent' => 3,
+    'read' => 4
   }
 
   enum sentiment: {
-      'POSITIVE': 1,
-      'NEGATIVE': 2,
-      'NEUTRAL': 3
+      'positive': 1,
+      'negative': 2,
+      'neutral': 3
   }
 
-  after_commit :reply_message, if: ->(obj) { obj.message_type == 'INBOUND' && obj.saved_change_to_status? && obj.status == 'ACK' }
+  belongs_to :intent, optional: true
+  belongs_to :chatbot, optional: true
+
+  after_commit :reply_message, if: ->(obj) { obj.message_type == 'inbound' && obj.saved_change_to_status? && obj.status == 'ack' }
 
   def reply_message
     SetupBotSession.new(self).send_message

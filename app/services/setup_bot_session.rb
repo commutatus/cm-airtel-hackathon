@@ -81,9 +81,9 @@ class SetupBotSession
   def update_message_information(response)
     intent_name = response.dig('session_state', 'intent', 'name')
     intent_id = Intent.find_by_name(intent_name)&.id
-    sentiment_name = response.dig('interpretations', 0, 'sentiment_response', 'sentiment')
-    sentiment_score = response.dig('interpretations', 0, 'sentiment_response', 'sentiment_score', sentiment_name.underscore)
-    @event.update(chatbot_id: @chatbot.id, intent_name:, intent_id:,
+    sentiment_name = response.dig('interpretations', 0, 'sentiment_response', 'sentiment')&.underscore
+    sentiment_score = response.dig('interpretations', 0, 'sentiment_response', 'sentiment_score', sentiment_name)
+    @event.update!(chatbot_id: @chatbot.id, intent_name: intent_name, intent_id: intent_id,
                              sentiment: sentiment_name, sentiment_score: sentiment_score)
   end
 end
