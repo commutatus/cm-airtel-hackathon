@@ -2,23 +2,23 @@
 
 class Message < ApplicationRecord
   enum message_type: {
-    inbound: 0,
-    outbound: 1
+    inbound: 'inbound',
+    outbound: 'outbound'
   }
 
   enum status: {
-    ack: 0,
-    received: 1,
-    initiated: 2,
-    sent: 3,
-    read: 4,
-    failed: 5
+    ack: 'ack',
+    received: 'received',
+    initiated: 'initiated',
+    sent: 'sent',
+    read: 'read',
+    failed: 'failed'
   }
 
   enum sentiment: {
-    positive: 1,
-    negative: 2,
-    neutral: 3
+    positive: 'positive',
+    negative: 'negative',
+    neutral: 'neutral'
   }
 
   belongs_to :intent, optional: true
