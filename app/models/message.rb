@@ -12,7 +12,8 @@ class Message < ApplicationRecord
     initiated: 'initiated',
     sent: 'sent',
     read: 'read',
-    failed: 'failed'
+    failed: 'failed',
+    delivered: 'delivered'
   }
 
   enum sentiment: {
