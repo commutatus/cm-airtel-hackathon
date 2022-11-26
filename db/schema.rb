@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_24_142544) do
+ActiveRecord::Schema.define(version: 2022_11_26_102248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,14 +122,17 @@ ActiveRecord::Schema.define(version: 2022_11_24_142544) do
     t.bigint "chatbot_id"
     t.string "intent_name"
     t.bigint "intent_id"
-    t.integer "status"
-    t.integer "sentiment"
+    t.string "status", comment: "Delivery statue of the message."
+    t.string "sentiment", comment: "Analysed sentiment for the inbound message."
     t.string "sentiment_score"
-    t.integer "message_type"
+    t.string "message_type", comment: "Inbound or outbound message."
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatbot_id"], name: "index_messages_on_chatbot_id"
     t.index ["intent_id"], name: "index_messages_on_intent_id"
+    t.index ["message_type"], name: "index_messages_on_message_type"
+    t.index ["sentiment"], name: "index_messages_on_sentiment"
+    t.index ["status"], name: "index_messages_on_status"
   end
 
   create_table "responses", force: :cascade do |t|
