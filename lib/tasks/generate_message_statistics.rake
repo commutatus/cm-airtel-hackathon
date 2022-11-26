@@ -8,16 +8,17 @@ namespace :generate_message_statistics do
       next unless payload.present?
 
       message_entry = Message.find_or_create_by(message_id: payload['messageId'])
-      message_type = payload['msgStream']&.underscore == 'OUTBOUND' ? 'outbound' : nil
+      message_status = payload['msgStream']&.underscore
+      message_type = :outbound if message_status.eql?('outbound')
       message_entry.update(from: payload['sourceAddress'],
                            to: payload['recipientAddress'],
-                           status: payload['msgStatus']&.underscore,
+                           status: message_status,
                            text: payload.dig('messageParameters', 'text',
                                              'body').presence || message_entry.text,
                            session_id: payload['sessionId'],
-                           message_type:)
+                           message_type: message_type)
     end
     # to prevent triggering callback
-    Message.where(message_type: nil).update_all(message_type: 'inbound')
+    Message.where(message_type: nil).update_all(message_type: :inbound)
   end
 end
