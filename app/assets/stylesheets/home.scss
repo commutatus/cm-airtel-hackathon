@@ -1,13 +1,41 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.coming-soon {
-  position: absolute;
-  width: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  @media screen and (max-width: 550px) {
-    width: 300px;
+
+// .coming-soon {
+//   position: absolute;
+//   width: 500px;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   @media screen and (max-width: 550px) {
+//     width: 300px;
+//   }
+// }
+
+.home-navbar {
+  width: 100%;
+
+  .left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #b0b0b0 !important;
+    color: #000000;
+  }
+
+  a {
+    color: #ffffff;
+
+    &:hover {
+      color: #b0b0b0;
+    }
+  }
+}
+
+.lower-footer {
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
