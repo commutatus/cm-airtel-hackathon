@@ -5,6 +5,7 @@ class Chatbot < ApplicationRecord
   include AwsLex::Chatbot
 
   belongs_to :user
+  has_many :messages
   has_many :intents, dependent: :delete_all
   has_many :chatbot_sessions, dependent: :destroy
 
