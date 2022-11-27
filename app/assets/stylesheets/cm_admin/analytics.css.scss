@@ -1,0 +1,109 @@
+.content {
+  max-width: calc(100hw - 225px);
+  margin: 24px;
+
+  .heading {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+
+  .sentiment-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-inline: auto;
+    width: 50%;
+
+    .percentage-division {
+      display: flex;
+      .negative, .neutral, .positive {
+        padding: 10px;
+        border-radius: 5px;
+      }
+    }
+    .primary-sentiment {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .sentiment-counts {
+      display: flex;
+      .negative-count, .neutral-count, .positive-count {
+        font-size: 20px;
+        font-weight: bold;
+        .header {
+          font-size: 16px;
+          color: #737373;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .negative-count {
+      color: #E6484D;
+    }
+    .neutral-count {
+      color: #FFA01C;
+    }
+    .positive-count {
+      color: #46A759;
+    }
+    .negative {
+      background-color: #E6484D;
+    }
+    .neutral {
+      background-color: #FFA01C;
+      margin-inline: 4px;
+    }
+    .positive {
+      background-color: #46A759;
+    }
+  }
+  .report-grid {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-inline: auto;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .report-statistic-box {
+    background-color: #fafafa;
+    border-radius: 16px;
+    text-align: center;
+
+    .box-header {
+      border-bottom: 2px solid #f2f2f2;
+      font-weight: bold;
+      font-size: 16px;
+      padding-block: 10px;
+    }
+
+    .box-content {
+      margin: 20px auto;
+      .total, .inbound, .outbound {
+        font-size: 28px;
+      }
+      .inbound, .inbound-percentage {
+        color: #FE7A38;
+      }
+      .outbound, .outbound-percentage {
+        color: #337BDC;
+      }
+      .status {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        padding-block: 1rem;
+        .element {
+          color: #6C6C6C;
+          .count {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
