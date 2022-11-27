@@ -1,0 +1,115 @@
+<nav id="navbar-header" class="navbar  navbar-dark bg-dark px-3 home-navbar">
+  <div class="left">
+    <div>
+      <%= image_tag("logo.png", alt: "Company Logo") %>
+      <a class="navbar-brand" href="#scrollspyHome">Team Commutatus</a>
+    </div>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyArchitecturalDiagram">Architectural diagram</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyVideoDemo">Video Demo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyMeetTheTeam">Meet the Team</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users/sign_in">Admin Panel</a>
+      </li>
+    </ul>
+  </div>
+  <div class="right">
+    <a class="navbar-brand" href="https://www.techgig.com/hackathon/airteliq-edtech">Airtel IQ Hackathon</a>
+  </div>
+</nav>
+<div data-bs-spy="scroll" data-bs-target="#navbar-header" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+  <div id="scrollspyHome" class="home">
+    <h2>Everton</h2>
+    <h3>NLP-based WhatsApp chatbot for the Ed-Tech use case</h3>
+    <a class="btn-trynow draw-border" href="https://wa.me/918904587747?text=Hello"><span>Try Now </span></a>
+  </div>
+  <div id="scrollspyArchitecturalDiagram" class="architectural-diagram">
+    <div class="inner-div">
+      <h2 class="p-2">Architectural diagram<h2>
+      <%= image_tag("architectural_diagram.png", alt: "Architectural diagram", class: "arch-diagram-img") %>
+    </div>
+  </div>
+  <div id="scrollspyVideoDemo" class="video-demo">
+    <div class="inner-div">
+      <h2 class="p-2">Video Demo<h2>
+      <iframe class="video" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+      </iframe>
+    </div>
+  </div>
+  <div id="scrollspyMeetTheTeam" class="meet-team">
+    <div class="inner-div pb-4">
+      <h2 class="p-2">Meet the Team</h2>
+      <div class="card-array">
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("aditya.png", alt: "Aditya Tiwari", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Aditya Tiwari</h5>
+            <span class="card-text">Engineering Lead</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("shrudhin.jpeg", alt: "Shrudhin V Raj", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Shrudhin V Raj</h5>
+            <span class="card-text">Backend Engineer</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("debajyoti.jpeg", alt: "Debajyoti Dutta", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Debajyoti Dutta</h5>
+            <span class="card-text">Backend Engineer</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("laasya.jpeg", alt: "Laasya Kurunu", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Laasya Kanuru</h5>
+            <span class="card-text">Data Science Engineer</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-img">
+            <%= image_tag("gauri.jpeg", alt: "Gauri Kapse", class: "rounded-circle") %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Gauri Kapse</h5>
+            <span class="card-text">Data Analyst and Engineer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="bg-dark text-center text-white">
+  <div class="container p-4 pb-0">
+    <section class="mb-4">
+       <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/commutatus/" role="button" target="_blank"
+        ><i class="fab fa-instagram"></i
+      ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/company/commutatus" role="button" target="_blank"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/commutatus/?ref=br_rs" role="button" target="_blank"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+    </section>
+  </div>
+  <div class="text-center p-3 lower-footer">
+    <small>Copyright &copy; Commutatus</small>
+  </div>
+</footer>
