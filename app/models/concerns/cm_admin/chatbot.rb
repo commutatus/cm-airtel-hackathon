@@ -22,6 +22,8 @@ module CmAdmin::Chatbot
             field :phone_number, label: 'WhatsApp business number'
           end
         end
+
+        tab :analytics, 'analytics', layout_type: 'cm_association_index', partial: '/chatbot/analytics'
       end
 
       cm_new page_title: 'Add Chatbot', page_description: 'Enter all details to add chatbot' do
