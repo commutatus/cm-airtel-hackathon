@@ -1,0 +1,99 @@
+- total_message = @ar_object.messages.size
+- inbound_message = @ar_object.messages.inbound
+- outbound_message = @ar_object.messages.outbound
+
+- inbound_percent = total_message.zero? ? 0 : (inbound_message.size.to_f/total_message.to_f)*100
+- outbound_percent = total_message.zero? ? 0 : (outbound_message.size.to_f/total_message.to_f)*100
+
+.content
+  .heading Message Analytics
+  .report-grid
+    .report-statistic-box
+      .box-header Total
+      .box-content
+        .total = total_message
+        .inbound-percentage.my-3
+          = image_tag 'inbound.svg'
+          = "#{inbound_percent.to_i}% Inbound"
+        .outbound-percentage
+          = image_tag 'outbound.svg'
+          = "#{outbound_percent.to_i}% Outbound"
+    .report-statistic-box
+      .box-header Inbound
+      .box-content
+        .d-flex.justify-content-center.align-items-center
+          = image_tag 'inbound.svg', height: '28px'
+          .inbound = inbound_message.size
+        .status
+          .element title='Incoming messages that were received but not acknowledged by the bot'
+            .count = inbound_message.received.size
+            .name Received
+          .element title='Incoming messages that were acknowledged by the bot'
+            .count = inbound_message.ack.size
+            .name Acknowledged
+          .element title='Incoming  messages that failed due to system errors'
+            .count = inbound_message.failed.size
+            .name Failed
+    .report-statistic-box
+      .box-header Outbound
+      .box-content
+        .d-flex.justify-content-center.align-items-center
+          = image_tag 'outbound.svg', height:'28px'
+          .outbound = outbound_message.size
+        .status
+          .element title='Outgoing messages that were submitted to WhatsApp but no further status received'
+            .count = outbound_message.initiated.size
+            .name Initiated
+          .element title='Outgoing messages that were sent but not yet delivered/read by the customer'
+            .count = outbound_message.sent.size
+            .name Sent
+          .element title='Outgoing messages that were delivered by the customer'
+            .count = outbound_message.delivered.size
+            .name Delivered
+          .element title='Outgoing messages that were read by the customer'
+            .count = outbound_message.read.size
+            .name Read
+          .element title='Outgoing messages that failed due to system errors'
+            .count = outbound_message.failed.size
+            .name Failed
+
+  - negetive_sentiment = inbound_message.negative
+  - neutral_sentiment = inbound_message.neutral
+  - positive_sentiment = inbound_message.positive
+  - if total_message.zero?
+    - negative = neutral = positive = 33
+    - primary_sentiment = 'NA'
+  - else
+    - sentiments = { negative: negetive_sentiment.size, neutral: neutral_sentiment.size, positive: positive_sentiment.size }
+    - primary_sentiment = sentiments.max_by { |sentiment, val| val }[0].capitalize
+    - negative = inbound_message.size.zero? ? 0 : (negetive_sentiment.size.to_f/inbound_message.size.to_f)*100
+    - neutral = inbound_message.size.zero? ? 0 : (neutral_sentiment.size.to_f/inbound_message.size.to_f)*100
+    - positive = inbound_message.size.zero? ? 0 : (positive_sentiment.size.to_f/inbound_message.size.to_f)*100
+
+  .heading.mt-4 Sentiment Analysis
+  .sentiment-card
+    .primary-sentiment = "Primary sentiment is #{primary_sentiment}"
+    .percentage-division.my-3
+      .negative-sentiment style="width:#{negative}%" class="#{negative.zero? ? 'hidden' : ''}"
+        .negative
+      .neutral-sentiment style="width:#{neutral}%" class="#{neutral.zero? ? 'hidden' : ''}"
+        .neutral
+      .positive-sentiment style="width:#{positive}%" class="#{positive.zero? ? 'hidden' : ''}"
+        .positive
+
+    .sentiment-counts
+      .negative-count
+        .header Negative
+        div
+          span.mr-1 = image_tag 'negative.svg'
+          span = negetive_sentiment.size
+      .neutral-count.mx-4
+        .header Neutral
+        div
+          span.mr-1 = image_tag 'neutral.svg'
+          span = neutral_sentiment.size
+      .positive-count
+        .header Positive
+        div
+          span.mr-1 = image_tag 'positive.svg'
+          span = positive_sentiment.size

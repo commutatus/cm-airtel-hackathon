@@ -3,12 +3,16 @@ class CmAdmin::ChatbotPolicy < ApplicationPolicy
   def index?
     true
   end
-  
+
   def update?
     index?
   end
-  
+
   def destroy?
+    index?
+  end
+
+  def analytics?
     index?
   end
 
@@ -21,5 +25,5 @@ class CmAdmin::ChatbotPolicy < ApplicationPolicy
       end
     end
   end
-  
+
 end
