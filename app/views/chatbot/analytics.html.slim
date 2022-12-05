@@ -14,10 +14,10 @@
         .total = total_message
         .inbound-percentage.my-3
           = image_tag 'inbound.svg'
-          = "#{inbound_percent.to_i}% Inbound"
+          = "#{inbound_percent.round}% Inbound"
         .outbound-percentage
           = image_tag 'outbound.svg'
-          = "#{outbound_percent.to_i}% Outbound"
+          = "#{outbound_percent.round}% Outbound"
     .report-statistic-box
       .box-header Inbound
       .box-content
