@@ -21,6 +21,7 @@ module LexModelsV2
       })
 
       @intent.update_column('intent_id', resp.intent_id)
+      @chatbot.update_column('status', 'not_built')
     end
 
     # Updates the settings for an intent.
@@ -60,6 +61,8 @@ module LexModelsV2
             },
           },
         })
+
+        @chatbot.update_column('status', 'not_built')
       rescue => exception
         puts exception
       end
@@ -74,6 +77,8 @@ module LexModelsV2
           bot_version: 'DRAFT', # required. Must be DRAFT
           locale_id: @chatbot.locale_id, # required
         })
+
+        @chatbot.update_column('status', 'not_built')
       rescue => exception
         puts exception
       end
