@@ -11,6 +11,7 @@ module LexModelsV2
 
     # Builds a bot, its intents, and its slot types into a specific locale.
     def build
+      return if @bot.building?
       resp = @models_v2_client.build_bot_locale({
         bot_id: @bot.bot_id, # required
         bot_version: 'DRAFT', # required
