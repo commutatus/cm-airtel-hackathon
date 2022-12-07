@@ -9,6 +9,36 @@ module LexModelsV2
       )
     end
 
+    # Builds a bot, its intents, and its slot types into a specific locale.
+    def build
+      resp = @models_v2_client.build_bot_locale({
+        bot_id: @bot.bot_id, # required
+        bot_version: 'DRAFT', # required
+        locale_id: @bot.locale_id, # required
+      })
+
+      @bot.update_column('status', resp.bot_locale_status.downcase)
+
+      bot_built_waiter
+    end
+
+    # Polls an API operation to get the built status until a resource enters a success/failure state.
+    def bot_built_waiter
+      begin
+        resp = @models_v2_client.wait_until(:bot_locale_built, {
+          bot_id: @bot.bot_id, # required
+          bot_version: 'DRAFT', # required
+          locale_id: @bot.locale_id, # required
+        })
+        status = resp.bot_locale_status.downcase
+      rescue => exception
+        puts exception
+        status = 'failed'
+      end
+
+      @bot.update_column('status', status)
+    end
+
     # Creates an Amazon Lex conversational bot and store the bot_id.
     def create_bot
       resp = @models_v2_client.create_bot({
