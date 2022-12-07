@@ -93,7 +93,7 @@ module LexModelsV2
 
     # Generate an array of hash for all the responses that belongs to intent
     def generate_success_response
-      responses = @intent.responses.map(&:content)
+      responses = ::Response.where(intent: @intent).map(&:content)
 
       return nil if responses.size.zero?
 
