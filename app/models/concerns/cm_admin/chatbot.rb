@@ -1,6 +1,8 @@
 module CmAdmin::Chatbot
   extend ActiveSupport::Concern
   included do
+    STATUS_TAG_COLOR = { built: 'success', building: 'yellow-tag', failed: 'red-tag' }
+
     cm_admin do
       actions only: []
       cm_index do
@@ -12,6 +14,7 @@ module CmAdmin::Chatbot
         column :name
         column :description
         column :phone_number, header: 'WhatsApp business number'
+        column :status, field_type: :tag, tag_class: STATUS_TAG_COLOR
       end
 
       cm_show page_title: :name, page_description: 'Chatbot Details' do
@@ -20,6 +23,7 @@ module CmAdmin::Chatbot
             field :name
             field :description
             field :phone_number, label: 'WhatsApp business number'
+            field :status, field_type: :tag, tag_class: STATUS_TAG_COLOR
           end
         end
 

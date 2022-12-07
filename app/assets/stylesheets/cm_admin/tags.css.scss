@@ -1,0 +1,10 @@
+.status-tag {
+  &.yellow-tag {
+    color: #FFC845;
+    background: #FFF8E9;
+  }
+  &.red-tag {
+    color: #F83636;
+    background: #FEEFEF;
+  }
+}
