@@ -16,6 +16,10 @@ class CmAdmin::ChatbotPolicy < ApplicationPolicy
     index?
   end
 
+  def build?
+    index?
+  end
+
   class Scope < Scope
     def resolve
       if @user.super_admin?

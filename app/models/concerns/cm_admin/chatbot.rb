@@ -24,6 +24,12 @@ module CmAdmin::Chatbot
         end
 
         tab :analytics, 'analytics', layout_type: 'cm_association_index', partial: '/chatbot/analytics'
+
+        custom_action name: 'build', route_type: 'member', verb: 'post', path: ':id/build',
+                      display_type: :button do |chatbot|
+          chatbot.build
+          chatbot
+        end
       end
 
       cm_new page_title: 'Add Chatbot', page_description: 'Enter all details to add chatbot' do
