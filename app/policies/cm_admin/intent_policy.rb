@@ -3,11 +3,11 @@ class CmAdmin::IntentPolicy < ApplicationPolicy
   def index?
     true
   end
-  
+
   def update?
     index?
   end
-  
+
   def destroy?
     index?
   end
@@ -20,6 +20,10 @@ class CmAdmin::IntentPolicy < ApplicationPolicy
     index?
   end
 
+  def build?
+    index?
+  end
+
   class Scope < Scope
     def resolve
       if @user.super_admin?
@@ -29,5 +33,5 @@ class CmAdmin::IntentPolicy < ApplicationPolicy
       end
     end
   end
-  
+
 end

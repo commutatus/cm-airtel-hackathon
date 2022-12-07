@@ -31,4 +31,9 @@ module AwsLex::Chatbot
   def delete_bot
     LexModelsV2::Chatbot.new(self).delete_bot
   end
+
+  # Build chatbot and update the status using waiter.
+  def build
+    LexModelsV2::Chatbot.new(self).build
+  end
 end

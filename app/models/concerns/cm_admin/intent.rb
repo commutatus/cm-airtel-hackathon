@@ -23,6 +23,12 @@ module CmAdmin::Intent
             field :chatbot_id, label: 'Chatbot Id'
           end
         end
+
+        custom_action name: 'build', route_type: 'member', verb: 'post', path: ':id/build',
+                      display_type: :button do |intent|
+          intent.chatbot.build
+          intent
+        end
       end
 
       tab :utterances, 'utterances', associated_model: :utterances, layout_type: 'cm_association_index', display_if: -> (obj) { obj.custom? } do
