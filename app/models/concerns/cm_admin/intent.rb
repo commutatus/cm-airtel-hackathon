@@ -11,7 +11,7 @@ module CmAdmin::Intent
 
         column :name
         column :description
-        column :chatbot_id
+        column :name, header: 'Chatbot', field_type: :association, association_name: :chatbot, association_type: :belongs_to
       end
 
       cm_show page_title: :name, page_description: 'Intent Details' do
@@ -20,7 +20,7 @@ module CmAdmin::Intent
             field :name
             field :description
             field :user_id, label: 'User Id'
-            field :chatbot_id, label: 'Chatbot Id'
+            field :name, label: 'Chatbot', field_type: :association, association_name: :chatbot, association_type: :belongs_to
           end
         end
 
