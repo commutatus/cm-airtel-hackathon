@@ -19,7 +19,6 @@ module CmAdmin::Intent
           cm_show_section 'Intent Details' do
             field :name
             field :description
-            field :user_id, label: 'User Id'
             field :name, label: 'Chatbot', field_type: :association, association_name: :chatbot, association_type: :belongs_to
           end
         end
