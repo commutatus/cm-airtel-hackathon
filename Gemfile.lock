@@ -105,7 +105,7 @@ GEM
       actionpack (>= 3.1)
       caxlsx (>= 3.0)
     childprocess (4.1.0)
-    cm-admin (0.8.9)
+    cm-admin (0.9.1)
       caxlsx_rails
       cocoon (~> 1.2.15)
       csv-importer (~> 0.8.2)
@@ -298,7 +298,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
-  cm-admin (~> 0.8.9)
+  cm-admin (~> 0.9.1)
   devise
   jbuilder (~> 2.7)
   listen (~> 3.3)
